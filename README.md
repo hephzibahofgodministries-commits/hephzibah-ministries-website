@@ -7,87 +7,235 @@ index.html
     <title>Hephzibah of God Ministries</title>
 
     <style>
+        :root {
+            --primary: #173f5f;
+            --primary-dark: #102f48;
+            --accent: #c89b3c;
+            --accent-soft: #f4ead2;
+            --light-blue: #eaf2f5;
+            --page-bg: #f7f8f6;
+            --text: #263238;
+            --muted: #60717a;
+            --white: #ffffff;
+            --border: #dce5e7;
+            --shadow: 0 12px 30px rgba(23, 63, 95, 0.09);
+            --spacing: clamp(1rem, 3vw, 2rem);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--page-bg);
+            color: var(--text);
             line-height: 1.7;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
         }
 
         header {
-            background: #073b78;
-            color: white;
+            background:
+                linear-gradient(135deg, rgba(16, 47, 72, 0.98), rgba(23, 63, 95, 0.94)),
+                var(--primary);
+            color: var(--white);
             text-align: center;
-            padding: 35px 15px;
+            padding: clamp(2.5rem, 8vw, 5rem) var(--spacing);
+            border-bottom: 4px solid var(--accent);
         }
 
         header h1 {
-            margin-bottom: 5px;
-            font-size: 27px;
+            margin: 0 0 0.5rem;
+            font-size: clamp(1.7rem, 5vw, 2.5rem);
+            line-height: 1.2;
+            letter-spacing: 0.04em;
         }
 
         header p {
-            color: #e1e8f0;
+            margin: 0.35rem 0;
+            color: #e7eef0;
         }
 
         nav {
-            background: #ffffff;
-            text-align: center;
-            padding: 15px 5px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.35rem 0.75rem;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 0.75rem var(--spacing);
+            box-shadow: 0 4px 16px rgba(23, 63, 95, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         nav a {
-            color: #073b78;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.5rem 0.75rem;
+            color: var(--primary);
             text-decoration: none;
-            margin: 0 8px;
-            font-weight: bold;
-            display: inline-block;
+            font-weight: 700;
+            border-radius: 999px;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            background: var(--accent-soft);
+            color: var(--primary-dark);
+            transform: translateY(-1px);
+            outline: none;
         }
 
         .hero {
-            background: #e4edf8;
+            background:
+                linear-gradient(rgba(234, 242, 245, 0.94), rgba(234, 242, 245, 0.94)),
+                radial-gradient(circle at top right, #f4ead2, transparent 45%);
             text-align: center;
-            padding: 50px 20px;
+            padding: clamp(3.5rem, 11vw, 7rem) var(--spacing);
         }
 
         .hero h2 {
-            color: #073b78;
-            font-size: 30px;
+            margin-top: 0;
+            color: var(--primary);
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            line-height: 1.25;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 1rem auto;
+            color: var(--muted);
         }
 
         .button {
-            display: inline-block;
-            background: #073b78;
-            color: white;
-            padding: 12px 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.75rem 1.35rem;
+            background: var(--primary);
+            color: var(--white);
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 12px;
+            border: 2px solid var(--primary);
+            border-radius: 999px;
+            margin-top: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(23, 63, 95, 0.18);
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(23, 63, 95, 0.24);
+            outline: 3px solid rgba(200, 155, 60, 0.35);
+            outline-offset: 3px;
         }
 
         section {
-            padding: 30px 20px;
-            max-width: 850px;
-            margin: auto;
+            width: min(100% - 2rem, 850px);
+            padding: clamp(2rem, 6vw, 3rem);
+            margin: 1.5rem auto;
+            scroll-margin-top: 5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(23, 63, 95, 0.12);
         }
 
         section h2 {
-            color: #073b78;
+            margin-top: 0;
+            color: var(--primary);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            line-height: 1.3;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
         }
 
         .verse {
-            background: white;
-            border-left: 5px solid #aebbc9;
-            padding: 20px;
-            margin-top: 20px;
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            padding: clamp(1rem, 4vw, 1.5rem);
+            margin-top: 1.25rem;
+            border-radius: 0 12px 12px 0;
+            color: var(--primary-dark);
+        }
+
+        .verse p {
+            margin-top: 0;
         }
 
         footer {
-            background: #073b78;
-            color: white;
+            background: var(--primary-dark);
+            color: var(--white);
             text-align: center;
-            padding: 22px 12px;
+            padding: 2.5rem var(--spacing);
+            border-top: 4px solid var(--accent);
+        }
+
+        footer p {
+            margin: 0.35rem 0;
+            color: #e7eef0;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                justify-content: stretch;
+                gap: 0.25rem;
+            }
+
+            nav a {
+                flex: 1 1 calc(50% - 0.25rem);
+                text-align: center;
+            }
+
+            section {
+                width: min(100% - 1.5rem, 850px);
+                padding: 1.5rem;
+                margin-block: 1rem;
+            }
+        }
+
+        @media (min-width: 601px) {
+            nav a {
+                padding-inline: 0.9rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            nav a,
+            .button,
+            section {
+                transition: none;
+            }
         }
     </style>
 </head>
